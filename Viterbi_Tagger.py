@@ -223,12 +223,13 @@ def viterbi(brown, knownwords, qvalues, evalues):
         for path in path_probability:
             tuple=path_probability[path]
             if tuple[0] > best_path[0]:
-                best_path = tuple[1]
+		best_path = tuple
+
         i=0
         for word in sentence:
             if word == "*" or word == "STOP":
                 continue
-            tagged_sentence += word + "/" + best_path[i][1] + " "
+            tagged_sentence += word + "/" + best_path[1][i][1] + " "
             i+= 1
         tagged_sentence += "\n"
         tagged.append(tagged_sentence)
